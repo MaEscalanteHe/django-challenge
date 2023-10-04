@@ -1,6 +1,7 @@
+import uuid
+
 from django.core.exceptions import ValidationError
 from django.db import models
-import uuid
 
 
 def validate_positive(value):
