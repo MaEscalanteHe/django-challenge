@@ -1,4 +1,4 @@
-FROM python:3.10.9-alpine
+FROM python:3.11.5-alpine
 
 EXPOSE 8080
 
@@ -17,12 +17,4 @@ RUN apk update \
 COPY ./requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-COPY ./entrypoint.sh .
-RUN sed -i 's/\r$//g' /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-
 COPY . .
-
-ENTRYPOINT ["/app/entrypoint.sh"]
-# ENTRYPOINT [ "python" "manage.py"]
-CMD [ "runserver", "0.0.0.0:8080" ]
